@@ -1,4 +1,4 @@
-# IDS-706-Proj1
+# IDS-Proj11-MiniProject
 A hands on Project to start with GitHub repository
 #By - Ayush Gupta
 #Net ID- ag758
