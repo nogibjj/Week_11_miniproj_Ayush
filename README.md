@@ -43,7 +43,7 @@ A simple workflow ``Data_Workflow`` has been setup in Databricks which performs 
 3. Analyze
 
 Sucessful execution of Databricsk Workflow:
-![Data Workflow](resources/workflow.png)
+![Data Workflow](https://github.com/nogibjj/Week_11_miniproj_Ayush/blob/main/Images/Databricks_Runs.png)
 
 **Note**: The workflow is set to be manually triggered to save costs.
 
