@@ -13,7 +13,7 @@ A Databricks ``workflow`` is setup to run the notbooks in sequence to simulate t
 
 ``Github`` actions automatically performs the ``CICD`` workflows whenever there is a change in the repository.
 
-![Schema](resources/schema.png)
+![Schema](https://github.com/nogibjj/Week_11_miniproj_Ayush/blob/main/Images/Databricks_str.png)
 
 ## Instructions
 
