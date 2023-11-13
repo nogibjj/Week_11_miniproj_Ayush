@@ -1,52 +1,94 @@
-# IDS-Proj11-MiniProject
-A hands on Project to start with GitHub repository
-#By - Ayush Gupta
-#Net ID- ag758
+# Data Pipeline in Databricks
 
-## Goal
-The project goal is to get used to working on GitHub and create a basic working repository that could be used in future for other projects. Hence, it has been kept very basic and only goal is to install packages. 
+[![CI](https://github.com/nogibjj/IDS-706_rg361_week-11/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/IDS-706_rg361_week-11/actions/workflows/cicd.yml)
 
-## Developing
-We have created the following files  in the project : 
-1. Makefile
-2. README.md
-3. requirements.txt
-4. Github Actions
-5. .devcontainer
-6. A python file
+This repositroy contains files to process data in ``Databricks`` using ``PySpark``, ``Python``  and ``SQL``
 
-The Makefile.md has two targets along with the associated commands:
-1. install
-2. test
+The repo has been created from [Week-10 Mini-Project](https://github.com/nogibjj/IDS-706_rg361_week-10) and modified as per requirements.
 
-requirements.txt contains all the packages that need to be installed. 
+Created on on 08-Nov-2023
 
+## Overview
 
-The GitHub Actions workflow is writtened in YAML formatt that automates various tasks in GitHub repositories with the name defined as Ayush_CI.
+This project performs a sample End-to-End Data Pipeline in Databricks.
+The sample data is loaded from Databricks and the notebooks used for processing are saved in this Github Repository in the ``Notebooks`` folder.
 
-## Readme
-The README file contains all the relevant information of the files the repository contains and how to consume them. 
+A Databricks ``workflow`` is setup to run the notbooks in sequence to simulate the End-to-End workflow.
 
-## Requirements.txt
-Contains a list of packages to be installed. For now, I have used only the basic packages to be installed (considering one of the goal of the project was to keep it as limited as possible). The version of the package can also be specified to enable multiple collaborators to work on the same project. 
+``Github`` actions automatically performs the ``CICD`` workflows whenever there is a change in the repository.
 
-## MakeFile
-The Makefile contains information on installing packages, code formatting and testing. More functionalities could be added depending on the complexity of the project. 
+![Schema](resources/schema.png)
 
-## Code Files
-To test the working of the project, a sample file sum_two.py was created that adds the sum of two numbers in a code. 
+## Instructions
 
-## Github Actions:
-Contains a cicd.yml file to call that uses the triggers of push and pull to call the functions defined on MakeFile. For any changes in repository, this runs all the functionalities - installing packages, formatting code, and testing the code. 
+The Primary data and operations happen in the Databricks platform.
 
-## Workflow
-The GitHub actions 'Make install' call the install function in MakeFile to install all the packages there are in requirements.txt (mentioned under Makefile install )
+We use the ``million songs`` sample dataset available in databricks for this process.
 
-The following project was run via Actions Tab and all the mentioned actions had been successfully executed. 
+4 Notebooks have been created to perform the following tasks or steps in the pipeline:
 
-![Workflow](https://github.com/ayushg245/IDS-706-Proj1/blob/main/GitHub.png)
+1. ``EDA``: To get an overview of the data, this is only exploratory in nature and is **NOT** a part of the Final Workflow
+![EDA](resources/nb_eda.png)
+
+2. ``Ingestion``: This notebook loads the data from the sample dataset and saves it as ``songs`` table in Databricks
+![EDA](resources/nb_ingestion.png)
+
+3. ``Preparation``: This notebook contains the SQL code to process the raw data in ``songs`` and stores it as ``songs_prepared`` in databricks.
+![EDA](resources/nb_processing.png)
+
+4. ``Analyze``: This notebook has some sample queries to view data from the ``songs_prepared`` dataset.
+![EDA](resources/nb_analyze.png)
 
 
+## Workflows
+There are 2 workflows which happen in this project, the Data worflow which happens in Databricks and the CICD worflow which happens in Gtihub.
 
-[![Ayush CI](https://github.com/ayushg245/IDS-706-Proj1/actions/workflows/cicd.yml/badge.svg)](https://github.com/ayushg245/IDS-706-Proj1/actions/workflows/cicd.yml)
+### Data Worflow
+A simple workflow ``Data_Workflow`` has been setup in Databricks which performs the following 3 actions using the corresponding notebooks as mentioned above:
+1. Ingestion
+2. Preparation
+3. Analyze
+
+Sucessful execution of Databricsk Workflow:
+![Data Workflow](resources/workflow.png)
+
+**Note**: The workflow is set to be manually triggered to save costs.
+
+### CICD Workflow
+github actions are used to automate the following processes whenever a change is made to the files in the repository:
+   - ``install`` : installs the packages and libraries mentioned in the requirements.txt
+   - ``test`` : uses ``pytest`` to test the python script
+      
+      **Note:** Currently there is no test setup since the files and workflow runs in Databricks.
+     
+   - ``format`` : uses ``black`` to format the python files
+   - ``lint`` : uses ``ruff`` to lint the python files
+
+**Note** -if all the processes run successfully the following output will be visible in github actions:
+   ![Success Build](resources/build.png)
+
+   
+## Contents
+The Github Repository Contains the following items:
+
+### 1. README.md
+   contains the information about the repository and instructions for using it
+   
+### 2. requirements.txt
+   contains the list of packages and libraries which are required for running the project. These are intalled and used in the virtual environment and Github actions.
+   
+### 3. .github/workflows
+  Contains the ``cicd.yml`` file which has the steps and instructions for the Github CICD workflow (using Github Actions)
+ 
+### 4. Makefile
+   contains the instructions and sequences for the processes used in github actions and .devcontainer for creating the virtual environment
+   
+### 5. .devcontainer
+   contains the ``dockerfile`` and ``devcontainer.json`` files which are used to build and define the setting of the virtual environment (codespaces - python) for running the codes.
+
+### 6. Notebooks
+   The 4 notebooks which are mentioned earlier are stored in the ``Notebooks`` folder in this Github repository so as to have version control and CICD
+
+### 7. resources 
+   contains additonal files which are used in the README
 
