@@ -4,8 +4,6 @@
 
 This repositroy contains files to process data in ``Databricks`` using ``PySpark``, ``Python``  and ``SQL``
 
-The repo has been created from [Week-10 Mini-Project](https://github.com/nogibjj/IDS-706_rg361_week-10) and modified as per requirements.
-
 ## Overview
 
 This project performs a sample End-to-End Data Pipeline in Databricks.
