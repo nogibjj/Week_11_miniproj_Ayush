@@ -26,17 +26,12 @@ We use the ``million songs`` sample dataset available in databricks for this pro
 4 Notebooks have been created to perform the following tasks or steps in the pipeline:
 
 1. ``EDA``: To get an overview of the data, this is only exploratory in nature and is **NOT** a part of the Final Workflow
-![EDA](resources/nb_eda.png)
 
 2. ``Ingestion``: This notebook loads the data from the sample dataset and saves it as ``songs`` table in Databricks
-![EDA](resources/nb_ingestion.png)
 
 3. ``Preparation``: This notebook contains the SQL code to process the raw data in ``songs`` and stores it as ``songs_prepared`` in databricks.
-![EDA](resources/nb_processing.png)
 
 4. ``Analyze``: This notebook has some sample queries to view data from the ``songs_prepared`` dataset.
-![EDA](resources/nb_analyze.png)
-
 
 ## Workflows
 There are 2 workflows which happen in this project, the Data worflow which happens in Databricks and the CICD worflow which happens in Gtihub.
